@@ -10,7 +10,8 @@ const App = () => {
   const [product, setProduct] = useState([]);
   const [products, setProducts] = useState([]);
   const [deleted, setDeleted] = useState(false);
-
+  const [productDetails , setProductDetails] = useState(null);
+  const [userDetails , setUserDetails] = useState(null);
 
   const getProduct = () => {
     axios({
@@ -21,8 +22,7 @@ const App = () => {
 
   useEffect(() => {
     getProduct();
-    console.log(product);
-  }, []);
+  }, [deleted]);
 
   const getProducts = () => {
     axios({
@@ -43,7 +43,7 @@ const App = () => {
   };
   useEffect(() => {
     getUser();
-  }, []);
+  }, [deleted]);
 
   const getUsers = () => {
     axios({
@@ -53,10 +53,9 @@ const App = () => {
   };
   useEffect(() => {
     getUsers();
-  }, []);
+  }, [deleted]);
   return (
     <div className="text-center">
-      <h1>App</h1>
       <Routes>
         <Route path="/*" element={<LayoutUser />} />
         <Route
@@ -71,6 +70,10 @@ const App = () => {
               setProducts={setProducts}
               deleted={deleted} 
               setDeleted={setDeleted}
+              productDetails= {productDetails}
+              setProductDetails = {setProductDetails}
+              userDetails= {userDetails}
+              setUserDetails = {setUserDetails}
             />
           }
         />

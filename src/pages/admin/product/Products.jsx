@@ -16,8 +16,8 @@ import Swal from "sweetalert2";
 
 const TABLE_HEAD = ["Products", "Price", "Category", "Count", "Actions"];
 
-const Users = ({ products, deleted, setDeleted }) => {
-  const deltePrdouct = ({ title, id }) => {
+const Products = ({ products, deleted, setDeleted }) => {
+  const deleteProduct = ({ title, id }) => {
     Swal.fire({
       title: "Are you sure ??",
       text: `Deleting ${title} ...`,
@@ -30,7 +30,7 @@ const Users = ({ products, deleted, setDeleted }) => {
       if (result.isConfirmed) {
         Swal.fire({
           title: "Deleted!",
-          text: "Your file has been deleted.",
+          text: "Your Product has been deleted.",
           icon: "success"
         });
         axios({
@@ -40,23 +40,23 @@ const Users = ({ products, deleted, setDeleted }) => {
       }
     });
   };
-  console.log(products)
+  
   return (
-    <div className="w-full bg-gradient-to-r from-[#ff6ec4] to-[#7873f5] py-10">
-      <div className="flex flex-col items-center bg-gray-800 max-w-7xl mx-auto p-8 shadow-lg rounded-lg">
-        <h1 className="mt-3 mb-[1.5em] bg-clip-text text-transparent bg-gradient-to-r from-[#ff6ec4] to-[#7873f5] text-5xl font-extrabold animate-pulse">
+    <div className="w-full bg-gradient-to-r from-blue-200 to-indigo-500 py-10">
+      <div className="flex flex-col items-center bg-white max-w-7xl mx-auto p-8 shadow-lg rounded-lg">
+        <h1 className="mt-3 mb-[1.5em] bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-indigo-500 text-5xl font-extrabold animate-pulse">
           Welcome To Products
         </h1>
         
 
-        <Link to={`/admin/add`}>
-                            <Button variant="gradient" color="green" className="mb-3">
+        <Link to={`/admin/addProduct`}>
+                            <Button variant="gradient" color="blue" className="mb-3">
                             Add New Product
                             </Button>
                           </Link>
 
 
-        <Card className="h-full w-fit bg-blue-gray-400">
+        <Card className="h-full w-fit bg-[#bae6fd]">
           <CardBody>
             <table className="table-auto w-fit mx-auto text-left">
               <thead>
@@ -64,7 +64,7 @@ const Users = ({ products, deleted, setDeleted }) => {
                   {TABLE_HEAD.map((head) => (
                     <th
                       key={head}
-                      className={`bg-blue-gray-50/50 p-4 ${
+                      className={`bg-[#7dd3fc] p-4 ${
                         head === "Actions" && "text-center"
                       }`}
                     >
@@ -92,7 +92,7 @@ const Users = ({ products, deleted, setDeleted }) => {
                             src={image}
                             alt={index}
                             size="md"
-                            className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
+                            className="border border-blue-gray-50 bg-blue-gray-400 object-contain p-1"
                           />
                           <Typography
                             variant="small"
@@ -128,7 +128,7 @@ const Users = ({ products, deleted, setDeleted }) => {
                       </td>
                       <td className="py-4">
                         <div className="w-max flex gap-4">
-                          <Link to={`/admin/edit/${id}`}>
+                          <Link to={`/admin/editProduct/${id}`}>
                           <Tooltip content="Edit Product">
                             <IconButton variant="text">
                               <PencilIcon className="h-4 w-4" />
@@ -136,16 +136,16 @@ const Users = ({ products, deleted, setDeleted }) => {
                           </Tooltip>
                           </Link>
                           
-                          <Link to={`/admin/view/${id}`}>
-                            <Button variant="gradient" className="rounded-full">
-                              
+                          <Link to={`/admin/viewProduct/${id}`}>
+                            <Button className="rounded-full bg-indigo-500">
+                              VIEW
                             </Button>
                           </Link>
                           <Button
-                            onClick={() => deltePrdouct({ title, id })}
-                            className="bg-red-400 "
+                            color="blue"
+                            onClick={() => deleteProduct({ title, id })}
                           >
-                            Make it User
+                            DELETE
                           </Button>
                         </div>
                       </td>
@@ -161,4 +161,4 @@ const Users = ({ products, deleted, setDeleted }) => {
   );
 };
 
-export default Users;
+export default Products;

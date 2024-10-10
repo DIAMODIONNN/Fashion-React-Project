@@ -9,10 +9,9 @@ import {
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
-const Dashboard = ({ user, users, products, product, setProducts }) => {
+const Dashboard = ({ user, users, products, product}) => {
   return (
     <div>
-      {/* Cards Section */}
       <div className="flex flex-wrap justify-evenly items-center gap-6 p-6">
         <Card className="mt-6 w-full sm:w-96 hover:shadow-2xl transition-shadow duration-300">
           <CardHeader color="blue-gray" className="relative h-56">

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   Card,
   Input,
-  Checkbox,
   Button,
   Typography,
 } from "@material-tailwind/react";
@@ -39,9 +38,8 @@ const AddProducts = ({setDeleted , deleted}) => {
             title: "The New Product Added Successfully",
             showConfirmButton: false,
             timer: 2000
-          }).then(_=>navigate('/admin'));
+          }).then(_=>navigate('/admin/products'));
       }
-        
     )}
   };
 
@@ -61,6 +59,7 @@ const AddProducts = ({setDeleted , deleted}) => {
           <div className="mb-1 flex flex-col gap-6">
             <Input
               label="title"
+              className="bg-white"
               value={product.title}
               onChange={(e) =>
                 setProduct({ ...product, title: e.target.value })
@@ -68,6 +67,7 @@ const AddProducts = ({setDeleted , deleted}) => {
             />
             <Input
               label="price"
+              className="bg-white"
               type="number"
               value={product.price}
               onChange={(e) =>
@@ -76,6 +76,7 @@ const AddProducts = ({setDeleted , deleted}) => {
             />
             <Input
               label="description"
+              className="bg-white"
               value={product.description}
               onChange={(e) =>
                 setProduct({ ...product, description: e.target.value })
@@ -83,6 +84,7 @@ const AddProducts = ({setDeleted , deleted}) => {
             />
             <Input
               label="category"
+              className="bg-white"
               value={product.category}
               onChange={(e) =>
                 setProduct({ ...product, category: e.target.value })
@@ -90,6 +92,7 @@ const AddProducts = ({setDeleted , deleted}) => {
             />
             <Input
               label="image"
+              className="bg-white"
               type="url"
               value={product.image}
               onChange={(e) =>
@@ -99,6 +102,7 @@ const AddProducts = ({setDeleted , deleted}) => {
             <Input
               label="rate"
               type="number"
+              className="bg-white"
               value={product.rating.rate}
               onChange={(e) =>
                 setProduct({
@@ -109,6 +113,7 @@ const AddProducts = ({setDeleted , deleted}) => {
             />
             <Input
               label="count"
+              className="bg-white"
               type="number"
               value={product.rating.count}
               onChange={(e) =>
@@ -119,10 +124,14 @@ const AddProducts = ({setDeleted , deleted}) => {
               }
             />
           </div>
-
-          <Button className="mt-6" fullWidth type="submit">
-            sign up
+          <div className='flex justify-center items-center gap-5'>
+            <Button className="mt-6" fullWidth type="submit">
+             Confirm
+            </Button>
+            <Button onClick={() => navigate(-1)} color="cyan" className="mt-6">
+            BACK
           </Button>
+          </div>
         </form>
       </Card>
     </div>

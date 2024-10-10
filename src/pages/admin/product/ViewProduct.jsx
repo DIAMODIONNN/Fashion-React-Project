@@ -1,6 +1,6 @@
 import { Button } from "@material-tailwind/react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   Card,
@@ -9,10 +9,9 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-const ViewProduct = () => {
+const ViewProduct = ({productDetails , setProductDetails}) => {
   const navigate = useNavigate();
   const { productId } = useParams();
-  const [productDetails, setProductDetails] = useState(null);
 
   const getProduct = () => {
     axios({
@@ -34,12 +33,12 @@ const ViewProduct = () => {
   }, [productId]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen m-[-2em] bg-gray-100">
+    <div className="flex flex-col items-center justify-center mt-[4em]">
       {productDetails && (
-        <>
+        <div>
           <Card
             shadow={false}
-            className="relative w-full max-w-4xl text-center shadow-lg flex flex-row bg-white"
+            className="relative w-full max-w-4xl text-center shadow-lg flex flex-row "
           >
             <CardHeader
               floated={false}
@@ -56,24 +55,24 @@ const ViewProduct = () => {
               <Typography variant="h4" className="mb-4 font-bold text-gray-900">
                 {productDetails?.title}
               </Typography>
-              <Typography variant="body1" className="mb-4 text-gray-600">
+              <Typography variant="paragraph" className="mb-4 text-gray-600">
                 {productDetails?.description}
               </Typography>
-              <Typography variant="body2" className="mb-4 text-gray-700">
+              <Typography variant="paragraph" className="mb-4 text-gray-700">
                 Price:{" "}
                 <span className="font-semibold">${productDetails?.price}</span>
               </Typography>
-              <Typography variant="body2" className="text-gray-700">
+              <Typography variant="paragraph" className="text-gray-700">
                 Rating: {productDetails?.rating?.rate} / 5 (
                 {productDetails?.rating?.count} reviews)
               </Typography>
             </CardBody>
           </Card>
 
-          <Button onClick={() => navigate(-1)} color="amber" className="mt-6">
+          <Button onClick={() => navigate(-1)} color="cyan" className="mt-6">
             BACK
           </Button>
-        </>
+          </div>
       )}
     </div>
   );
