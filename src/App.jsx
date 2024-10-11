@@ -4,6 +4,7 @@ import LayoutUser from "./LayoutUser";
 import LayoutAdmin from "./LayoutAdmin";
 import axios from "axios";
 
+
 const App = () => {
   const [user, setUser] = useState([]);
   const [users, setUsers] = useState([]);
@@ -55,6 +56,7 @@ const App = () => {
     getUsers();
   }, [deleted]);
   return (
+
     <div className="text-center">
       <Routes>
         <Route path="/*" element={<LayoutUser />} />
