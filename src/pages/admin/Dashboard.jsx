@@ -34,7 +34,7 @@ const Dashboard = ({ user, users, products, product}) => {
           </CardBody>
           <CardFooter className="pt-4">
             <Link to={`/admin/users`}>
-              <Button className="w-full bg-blue-500 hover:bg-blue-700 transition-colors">
+              <Button className="w-full bg-blue-500 hover:bg-blue-700 transition-colors transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                 CHECK USERS
               </Button>
             </Link>
@@ -62,7 +62,7 @@ const Dashboard = ({ user, users, products, product}) => {
           </CardBody>
           <CardFooter className="pt-4">
             <Link to={`/admin/products`}>
-              <Button className="w-full bg-blue-500 hover:bg-blue-700 transition-colors">
+              <Button className="w-full bg-blue-500 hover:bg-blue-700 transition-colors transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                 CHECK PRODUCTS
               </Button>
             </Link>
